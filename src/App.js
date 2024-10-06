@@ -8,7 +8,6 @@ feat(p1-pdmn): cria componente principal e faz hello*/
 
 // import React from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css'; //em node_modules
-
 // const App = () => {
 //     return (
 //         <div className="container">
@@ -31,24 +30,66 @@ filho do principal, substituindo o texto “Hello, tarefas”.
 Mensagem do commit:
 feat(p1-pdmn): cria componente de entrada*/
 
+// import React, { useState } from 'react'; 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import TarefaEntrada from './TarefaEntrada';
+
+// const App = () => {
+//     const [tarefas, setTarefas] = useState([]); // Estado para armazenar as tarefas
+
+//     const adicionarTarefa = (descricao) => {
+//         setTarefas([...tarefas, descricao]); // Adicionar nova tarefa ao estado
+//     };
+
+//     return (
+//         <div className="container">
+//             <TarefaEntrada onAdicionar={adicionarTarefa} /> {/* Componente de entrada */}
+//             <ul className="list-group">
+//                 {tarefas.map((tarefa, index) => (
+//                     <li key={index} className="list-group-item">
+//                         {tarefa} {/* Renderiza cada tarefa */}
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// };
+
+// export default App;
+
+/*Tarefa 3:
+Deve ser possível visualizar uma lista de tarefas fictícias (ou seja, chumbadas no
+código, nada que o usuário tenha digitado em tempo de requisição). A lista de tarefas
+chumbada, nesta versão, deve ser a mesma que o protótipo mostra. Essa
+funcionalidade deve ser implementada por um componente React exclusivo para este
+fim. Seu nome deve ser “TarefaLista”. O componente deve ser filho do principal.
+Mensagem do commit:
+feat(p1-pdmn): exibe lista ficticia
+*/
+
 import React, { useState } from 'react'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TarefaEntrada from './TarefaEntrada';
+import TarefaLista from './TarefaLista'; // Importando TarefaLista
 
 const App = () => {
     const [tarefas, setTarefas] = useState([]); // Estado para armazenar as tarefas
 
     const adicionarTarefa = (descricao) => {
-        setTarefas([...tarefas, descricao]); // Adicionar nova tarefa ao estado
+        setTarefas([...tarefas, descricao]); // Adiciona nova tarefa ao estado
     };
 
     return (
         <div className="container">
-            <TarefaEntrada onAdicionar={adicionarTarefa} /> {/* Componente de entrada */}
+            <TarefaEntrada onAdicionar={adicionarTarefa} /> 
+
+            {/* Criação da lista de tarefas fictícias */}
+            <TarefaLista />
+
             <ul className="list-group">
                 {tarefas.map((tarefa, index) => (
                     <li key={index} className="list-group-item">
-                        {tarefa} {/* Renderiza cada tarefa */}
+                        {tarefa}                                             
                     </li>
                 ))}
             </ul>
@@ -57,3 +98,4 @@ const App = () => {
 };
 
 export default App;
+

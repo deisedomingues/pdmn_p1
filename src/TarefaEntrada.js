@@ -10,7 +10,7 @@ const TarefaEntrada = ({ onAdicionar }) => {
     const handleSubmit = (e) => {
         e.preventDefault(); // Previne o comportamento padrão do formulário
         if (descricao.trim()) {
-            onAdicionar(descricao); // Chama a função passada por props
+            onAdicionar(descricao); // Chama a função passada por props (linha 78 em App.js)
             setDescricao(''); // Limpa o campo de entrada
         }
     };
@@ -24,8 +24,8 @@ const TarefaEntrada = ({ onAdicionar }) => {
                 className="form-control"
                 placeholder="Digite a descrição de uma nova tarefa"
             />
-            {/* <button type="button" class="btn btn-primary">Primary</button> */}
-            <button type="submit" className="btn btn-light mt-2"> 
+            
+            <button type="button" className="btn btn-light mt-2"> 
                 OK
             </button>
         </form>
