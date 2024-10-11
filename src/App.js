@@ -120,25 +120,53 @@ app-tarefas: permite cadastro e consulta de tarefas
 import React, { useState } from 'react'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TarefaEntrada from './TarefaEntrada';
+import TarefaLista from './TarefaLista'; // Importando TarefaLista
 
 const App = () => {
     const [tarefas, setTarefas] = useState([]); // Estado para armazenar as tarefas
+    const [exibirFicticias, setExibirFicticias] = useState(true); // Estado para controlar a exibição das tarefas fictícias
 
     const adicionarTarefa = (descricao) => {
         setTarefas([...tarefas, descricao]); // Adiciona nova tarefa ao estado
+        setExibirFicticias(false); // Após a primeira tarefa, desativamos a exibição das tarefas fictícias
     };
 
     return (
         <div className="container">
-            <TarefaEntrada onAdicionar={adicionarTarefa} /> 
+            <div className="row">
+                <div className="col">
+                    <h1 className="text-center mb-4"></h1>
+                </div>
+            </div>
 
-            <ul className="list-group">
-                {tarefas.map((tarefa, index) => (
-                    <li key={index} className="list-group-item">
-                        {tarefa}                                             
-                    </li>
-                ))}
-            </ul>
+            <div className="row">
+                <div className="col">
+                    <TarefaEntrada onAdicionar={adicionarTarefa} />
+                </div>
+            </div>
+
+            {exibirFicticias && (
+                <div className="row">
+                    <div className="col">
+                        <TarefaLista /> {/* Exibe a lista de tarefas fictícias apenas se exibirFicticias for true */}
+                    </div>
+                </div>
+            )}
+
+            <div className="row">
+                <div className="col">
+                    <ul  className={`list-group p-3 w-100 ${tarefas.length > 0 ? 'border border-warning' : ''}`}> {/*Aplica a borda amarela apenas se houver tarefas*/}
+                        {tarefas.map((tarefa, index) => (
+                            <li 
+                                key={index} 
+                                className= "list-group-item border border-dark mb-3" 
+                            >
+                                {tarefa}
+                            </li>   
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
     );
 };
