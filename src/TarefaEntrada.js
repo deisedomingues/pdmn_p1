@@ -21,15 +21,17 @@ const TarefaEntrada = ({ onAdicionar }) => {
                 type="text"
                 value={descricao}
                 onChange={handleInputChange}
-                className="form-control"
+                className="form-control form-control-lg border-dark w-100"
                 placeholder="Digite a descrição de uma nova tarefa"
             />
             
-            <button type="button" className="btn btn-light mt-2"> 
+            <button 
+                type="submit" 
+                className="btn btn-outline-primary mt-2 w-100 btn-lg border-primary text-dark">  {/*type="button"*/}
                 OK
             </button>
         </form>
     );
-};
+};  
 
 export default TarefaEntrada;
